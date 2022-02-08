@@ -55,6 +55,7 @@ public class Main {
                 masSnake[lenth+1][aa-1][bb]='1';
                 map[aa-1][bb]='1';
                 eat=true;
+                lenth++;
                 a--;
             }
             else if(map[a-1][b]=='-'){
@@ -62,6 +63,7 @@ public class Main {
                 map[aa+9][b]='1';
                 a+=9;
             }
+            else if (map[a-1][b]=='1') gameover=true;
                 break;
             case("s"):if(map[aa+1][b]=='0'){
                 map[aa+1][b]='1';
@@ -70,10 +72,11 @@ public class Main {
                 masSnake[1][aa-(lenth-1)][b]='0';
                 a++;
             }
-            else if(map[a-1][b]=='2'){
-                masSnake[lenth+1][aa+1][bb]='1';
-                map[aa+1][bb]='1';
+            else if(map[aa+1][b]=='2'){
+                masSnake[lenth+1][aa+1][b]='1';
+                map[aa+1][b]='1';
                 eat=true;
+                lenth++;
                 a++;
             }
             else if(map[a+1][b]=='-'){
@@ -81,6 +84,7 @@ public class Main {
                 map[aa-9][b]='1';
                 a-=9;
             }
+            else if (map[a+1][b]=='1') gameover=true;
                 break;
             case("a"):if(map[aa][b-1]=='0'){
                 map[aa][b-1]='1';
@@ -90,9 +94,10 @@ public class Main {
                 b--;
             }
             else if(map[a][b-1]=='2'){
-                masSnake[lenth+1][aa][bb-1]='1';
+                masSnake[lenth+1][aa][b-1]='1';
                 map[aa][b-1]='1';
                 eat=true;
+                lenth++;
                 b--;
             }
             else if(map[aa][b-1]=='|'){
@@ -100,6 +105,7 @@ public class Main {
                 map[aa][b+9]='1';
                 b+=9;
             }
+            else if (map[a][b-1]=='1') gameover=true;
                 break;
             case("d"):if(map[aa][b+1]=='0'){
                 map[aa][b+1]='1';
@@ -112,6 +118,7 @@ public class Main {
                 masSnake[lenth+1][aa][bb+1]='1';
                 map[aa][bb+1]='1';
                 eat=true;
+                lenth++;
                 b++;
             }
             else if(map[a][b+1]=='|'){
@@ -119,6 +126,7 @@ public class Main {
                 map[aa][b-9]='1';
                 b-=9;
             }
+            else if (map[a][b+1]=='1') gameover=true;
             break;
         }
 
