@@ -27,13 +27,11 @@ public class Main {
 	for(int i=1;i<11;i++){
 	    System.out.print("\t\t\t");
 	    for(int j=1;j<11;j++){
-	        if(j==1){        System.out.print('|');
-            }
+	        if(j==1){map[i][j-1]='|';System.out.print(map[i][j-1]);}
 	        if(fruitx==i && fruity==j) System.out.print(map[i][j]='2');
 	        else if(i==1 && j==1) System.out.print(map[i][j] = '1');
 	        else System.out.print(map[i][j] = '0');
-	        if(j==10){        System.out.print('|');
-            }
+            if(j==10){map[i][j+1]='|';System.out.print(map[i][j+1]);}
         }
         System.out.println();
     }
@@ -93,11 +91,11 @@ public class Main {
             }
             else if(map[a][b-1]=='2'){
                 masSnake[lenth+1][aa][bb-1]='1';
-                map[aa][bb-1]='1';
+                map[aa][b-1]='1';
                 eat=true;
                 b--;
             }
-            else if(map[a][b--]=='|'){
+            else if(map[aa][b-1]=='|'){
                 map[aa][b+(lenth-1)]='0';
                 map[aa][b+9]='1';
                 b+=9;
@@ -116,7 +114,7 @@ public class Main {
                 eat=true;
                 b++;
             }
-            else if(map[a][b++]=='|'){
+            else if(map[a][b+1]=='|'){
                 map[aa][b-(lenth-1)]='0';
                 map[aa][b-9]='1';
                 b-=9;
@@ -133,7 +131,7 @@ public class Main {
                 if(j==1){        System.out.print('|');
                 }
                 if(eat==true) {do{fruitx = 1+(rrr.nextInt(9));
-                 fruity = 1+(rrr.nextInt(9));}while(map[fruitx][fruity]=='0');eat=false;}
+                 fruity = 1+(rrr.nextInt(9));}while(map[fruitx][fruity]!='0');eat=false;}
                 if(fruitx==i && fruity==j ) System.out.print(map[i][j]='2');
                 else System.out.print(map[i][j]);
                 if(j==10){        System.out.print('|');
