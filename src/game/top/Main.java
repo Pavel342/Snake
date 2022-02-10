@@ -87,11 +87,11 @@ public class Main {
                 a++;
             }
             else if(map[aa+1][b]=='2'){
+                lenth++;
                 if(ostatokHvosta>=1){ map[aa-1][b]='1';map[ostatokHvosta][b]='0';ostatokHvosta--;}
                 else {map[aa+1][b]='1';for(int i=lenth;i>1;i--){masSnakex[i]=masSnakex[i-1];masSnakey[i]=masSnakey[i-1];}
                     masSnakex[1]=aa+1;masSnakey[1]=bb;}
                 eat=true;
-                lenth++;
                 a++;
             }
             else if(map[a+1][b]=='-'){
@@ -117,11 +117,11 @@ public class Main {
 
             }
             else if(map[a][b-1]=='2'){
+                lenth++;
                 if(ostatokHvosta>=1){ map[aa-1][b]='1';map[aa][ostatokHvosta]='0';ostatokHvosta--;}
                 else{map[aa][b-1]='1';for(int i=lenth;i>1;i--){masSnakex[i]=masSnakex[i-1];masSnakey[i]=masSnakey[i-1];}
                     masSnakex[1]=aa;masSnakey[1]=bb-1;}
                 eat=true;
-                lenth++;
                 b--;
             }
             else if(map[aa][b-1]=='|'){
@@ -145,11 +145,11 @@ public class Main {
                 b++;
             }
             else if(map[a][b+1]=='2'){
+                lenth++;
                 if(ostatokHvosta>=1){ map[aa][b+1]='1';map[aa][11-ostatokHvosta]='0';ostatokHvosta--;}
                 else{map[aa][bb+1]='1';for(int i=lenth;i>1;i--){masSnakex[i]=masSnakex[i-1];masSnakey[i]=masSnakey[i-1];}
                     masSnakex[1]=aa;masSnakey[1]=bb+1;}
                 eat=true;
-                lenth++;
                 b++;
             }
             else if(map[a][b+1]=='|'){
