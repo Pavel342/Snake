@@ -11,11 +11,10 @@ public class Main {
         Random rrr=new Random() ;
         boolean eat=false;
         int lenth=1;
-        char [][][] masSnake=new char[100][11][11];
-        masSnake[1][1][1]=1;
         int a=1,b=1;
         boolean gameover=false;
         int fruitx;
+        int ostatokHvosta=0;
         int fruity;
         do{fruitx = 1+(rrr.nextInt(9));
             fruity = 1+(rrr.nextInt(9));}while(fruitx==1 && fruity==1);
@@ -45,20 +44,20 @@ public class Main {
 	    int bb=b;
 	    switch (vvod){
             case("w"): if(map[aa-1][b]=='0'){
-                map[aa-1][b]='1';
-                masSnake[lenth][aa-1][b]='1';
-                map[aa+lenth-1][b]='0';
-                masSnake[1][aa+lenth-1][b]='0';
+                if(ostatokHvosta>=1){ map[aa-1][b]='1';map[ostatokHvosta][b]='0';ostatokHvosta--;}
+                else {map[aa-1][b]='1';
+                map[aa+lenth-1][b]='0';}
                 a--;
             }
             else if(map[a-1][b]=='2'){
-                masSnake[lenth+1][aa-1][bb]='1';
-                map[aa-1][bb]='1';
+                if(ostatokHvosta>=1){ map[aa-1][b]='1';map[ostatokHvosta][b]='0';ostatokHvosta--;}
+                else {map[aa-1][bb]='1';}
                 eat=true;
                 lenth++;
                 a--;
             }
             else if(map[a-1][b]=='-'){
+                if(lenth>1)ostatokHvosta=lenth-1;
                 map[aa+lenth-1][b]='0';
                 map[aa+9][b]='1';
                 a+=9;
@@ -66,20 +65,20 @@ public class Main {
             else if (map[a-1][b]=='1') gameover=true;
                 break;
             case("s"):if(map[aa+1][b]=='0'){
-                map[aa+1][b]='1';
-                masSnake[lenth][aa+1][b]='1';
-                map[aa-(lenth-1)][b]='0';
-                masSnake[1][aa-(lenth-1)][b]='0';
+                if(ostatokHvosta>=1){ map[aa+1][b]='1';map[11-ostatokHvosta][b]='0';ostatokHvosta--;}
+                else {map[aa+1][b]='1';
+                map[aa-(lenth-1)][b]='0';}
                 a++;
             }
             else if(map[aa+1][b]=='2'){
-                masSnake[lenth+1][aa+1][b]='1';
-                map[aa+1][b]='1';
+                if(ostatokHvosta>=1){ map[aa-1][b]='1';map[ostatokHvosta][b]='0';ostatokHvosta--;}
+                else {map[aa+1][b]='1';}
                 eat=true;
                 lenth++;
                 a++;
             }
             else if(map[a+1][b]=='-'){
+                if(lenth>1)ostatokHvosta=lenth-1;
                 map[aa-(lenth-1)][b]='0';
                 map[aa-9][b]='1';
                 a-=9;
@@ -87,20 +86,20 @@ public class Main {
             else if (map[a+1][b]=='1') gameover=true;
                 break;
             case("a"):if(map[aa][b-1]=='0'){
-                map[aa][b-1]='1';
-                masSnake[lenth][aa][b-1]='1';
-                map[aa][b+(lenth-1)]='0';
-                masSnake[1][aa][b+(lenth-1)]='0';
+                if(ostatokHvosta>=1){ map[aa][b-1]='1';map[aa][ostatokHvosta]='0';ostatokHvosta--;}
+                else{map[aa][b-1]='1';
+                map[aa][b+(lenth-1)]='0';}
                 b--;
             }
             else if(map[a][b-1]=='2'){
-                masSnake[lenth+1][aa][b-1]='1';
-                map[aa][b-1]='1';
+                if(ostatokHvosta>=1){ map[aa-1][b]='1';map[aa][ostatokHvosta]='0';ostatokHvosta--;}
+                else{map[aa][b-1]='1';}
                 eat=true;
                 lenth++;
                 b--;
             }
             else if(map[aa][b-1]=='|'){
+                if(lenth>1)ostatokHvosta=lenth-1;
                 map[aa][b+(lenth-1)]='0';
                 map[aa][b+9]='1';
                 b+=9;
@@ -108,20 +107,20 @@ public class Main {
             else if (map[a][b-1]=='1') gameover=true;
                 break;
             case("d"):if(map[aa][b+1]=='0'){
-                map[aa][b+1]='1';
-                masSnake[lenth][aa][b+1]='1';
-                map[aa][b-(lenth-1)]='0';
-                masSnake[1][aa][b-(lenth-1)]='0';
+                if(ostatokHvosta>=1){ map[aa][b+1]='1';map[aa][11-ostatokHvosta]='0';ostatokHvosta--;}
+                else{map[aa][b+1]='1';
+                map[aa][b-(lenth-1)]='0';}
                 b++;
             }
             else if(map[a][b+1]=='2'){
-                masSnake[lenth+1][aa][bb+1]='1';
-                map[aa][bb+1]='1';
+                if(ostatokHvosta>=1){ map[aa][b+1]='1';map[aa][11-ostatokHvosta]='0';ostatokHvosta--;}
+                else{map[aa][bb+1]='1';}
                 eat=true;
                 lenth++;
                 b++;
             }
             else if(map[a][b+1]=='|'){
+                if(lenth>1)ostatokHvosta=lenth-1;
                 map[aa][b-(lenth-1)]='0';
                 map[aa][b-9]='1';
                 b-=9;
@@ -129,7 +128,7 @@ public class Main {
             else if (map[a][b+1]=='1') gameover=true;
             break;
         }
-
+        if(gameover){System.out.print("Вы проебали:-(");break;}
         System.out.print("\t\t\t");
         for(int i=1;i<13;i++){System.out.print(map[0][i]);}
         System.out.println();
@@ -138,7 +137,7 @@ public class Main {
             for(int j=1;j<11;j++){
                 if(j==1){        System.out.print('|');
                 }
-                if(eat==true) {do{fruitx = 1+(rrr.nextInt(9));
+                if(eat) {do{fruitx = 1+(rrr.nextInt(9));
                  fruity = 1+(rrr.nextInt(9));}while(map[fruitx][fruity]!='0');eat=false;}
                 if(fruitx==i && fruity==j ) System.out.print(map[i][j]='2');
                 else System.out.print(map[i][j]);
@@ -150,7 +149,6 @@ public class Main {
         System.out.print("\t\t\t");
         for(int i=1;i<13;i++){System.out.print(map[11][i]);}
         System.out.println();
-	   // if(vvod.charAt(0)=='q')gameover=true;
     }
 
     }
