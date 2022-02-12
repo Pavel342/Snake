@@ -4,12 +4,14 @@ package game.top;
 import java.util.Random;
 import java.util.Scanner;
 
+
 public class Main {
 
     public static void main(String[] args) {
         Scanner in=new Scanner(System.in);
         Random rrr=new Random() ;
         boolean eat=false;
+        
         int lenth=1;
         int a=1,b=1;
         int[] masSnakex=new int[100];
@@ -43,7 +45,11 @@ public class Main {
         for(int i=1;i<13;i++){System.out.print(map[11][i]);}
         System.out.println();
 	while (!gameover){
-	    String vvod= in.next();
+        String vvod;
+	    do{ vvod= in.next();
+	    if(!vvod.equals("w") & !vvod.equals("s") & !vvod.equals("a") & !vvod.equals("d"))
+	    System.out.println("Ты че ввел еблан?( w, a, s, d!!!) ");}
+	    while (!vvod.equals("w") & !vvod.equals("s") & !vvod.equals("a") & !vvod.equals("d"));
 	    int aa=a;
 	    int bb=b;
 	    switch (vvod){
