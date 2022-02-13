@@ -11,8 +11,8 @@ public class Main {
         window.setLayout(new BorderLayout());
         window.setLocationRelativeTo(null);
         window.setVisible(true);
-       //rab figura=new rab();
-       // window.add(figura);
-       // figura.repaint();
+        mehanika figura=new mehanika();
+        //window.add(figura);
+        figura.repaint();
     }
 }
