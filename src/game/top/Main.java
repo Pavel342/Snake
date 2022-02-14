@@ -1,18 +1,27 @@
 package game.top;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.EventQueue;
+import javax.swing.JFrame;
 
-public class Main {
+public class Main extends JFrame{
+    public Main(){
+     init();
+    }
+    private  void init(){
+        add(new mehanika());
+        setResizable(false);
+        pack();
+        setTitle("Анаконда");
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+
     public static void main(String[] args) {
-        JFrame window=new JFrame("Змея");
-        window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        window.setSize(800,800);
-        window.setLayout(new BorderLayout());
-        window.setLocationRelativeTo(null);
-        window.setVisible(true);
-        mehanika figura=new mehanika();
-        //window.add(figura);
-        figura.repaint();
+
+        EventQueue.invokeLater(() -> {
+            JFrame ex = new Main();
+            ex.setVisible(true);
+        });
     }
 }

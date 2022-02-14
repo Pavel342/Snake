@@ -2,23 +2,72 @@ package game.top;
 
 import java.util.Random;
 import java.util.Scanner;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.FontMetrics;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
+import javax.swing.Timer;
 
 public class mehanika {
-    public mehanika() {
-        String[] a = new String[2];
-        mehanika(a);
-    }
+
     private static final Scanner in = new Scanner(System.in);
     private static final Random rrr = new Random();
     private static boolean eat = false;
     private static int lenth = 1;
     private static int a = 1, b = 1;
-    private static final int[] masSnakex = new int[100];
-    private static final int[] masSnakey = new int[100];
+    private boolean leftDirection = false;
+    private boolean rightDirection = true;
+    private boolean upDirection = false;
+    private boolean downDirection = false;
     public static boolean gameover = false;
     private static int fruitx;
     private static int fruity;
-    private static final char[][] map = new char[13][13];
+   // private static final char[][] map = new char[13][13];
+    private static final int shirina=600;
+    private static final int visota=500;
+    private static final int allDots=3000;
+    private static final int oneDot=20;
+    private static final int[] masSnakex = new int[allDots];
+    private static final int[] masSnakey = new int[allDots];
+    private Timer timer;
+    private Image telo;
+    private Image hui;
+    private Image head1;
+    public mehanika() {
+        initmehanika();
+    }
+
+    private void initmehanika() {
+
+        addKeyListener(new TAdapter());
+        setBackground(Color.black);
+        setFocusable(true);
+
+        setPreferredSize(new Dimension(B_WIDTH, B_HEIGHT));
+        loadImages();
+        initGame();
+    }
+    private void loadImages() {
+
+        ImageIcon iid = new ImageIcon("src/resurse/telo.png");
+        telo = iid.getImage();
+
+        ImageIcon iia = new ImageIcon("src/resurse/hui.png");
+        hui = iia.getImage();
+
+        ImageIcon iih = new ImageIcon("src/resurse/head1.png");
+        head1 = iih.getImage();
+    }
+
 
     public static void mehanika(String[] args) {
         masSnakex[1] = 1;
