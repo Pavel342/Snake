@@ -140,7 +140,7 @@ public class mehanika extends JPanel implements ActionListener{
 
         for (int i = lenth; i > 0; i--) {
 
-            if ((i > 4) && (masSnakex[0] == masSnakex[i]) && (masSnakey[0] == masSnakey[i])) {
+            if ( (masSnakex[0] == masSnakex[i]) && (masSnakey[0] == masSnakey[i])) {
                 gameover = true;
                 break;
             }
@@ -185,35 +185,44 @@ public class mehanika extends JPanel implements ActionListener{
         repaint();
     }
 
+
     private class TAdapter extends KeyAdapter {
 
         @Override
         public void keyPressed(KeyEvent e) {
 
             int key = e.getKeyCode();
+            char key2= e.getKeyChar();
 
-            if ((key == KeyEvent.VK_LEFT || key=='a') && (!rightDirection)) {
+            if ((key == KeyEvent.VK_LEFT || 'a'==key2) && (!rightDirection)) {
+                timer.start();
                 leftDirection = true;
                 upDirection = false;
                 downDirection = false;
             }
 
-            if ((key == KeyEvent.VK_RIGHT || key=='d') && (!leftDirection)) {
+            if ((key == KeyEvent.VK_RIGHT || key2=='d') && (!leftDirection)) {
+                timer.start();
                 rightDirection = true;
                 upDirection = false;
                 downDirection = false;
             }
 
-            if ((key == KeyEvent.VK_UP|| key=='w') && (!downDirection)) {
+            if ((key == KeyEvent.VK_UP|| key2=='w') && (!downDirection)) {
+                timer.start();
                 upDirection = true;
                 rightDirection = false;
                 leftDirection = false;
             }
 
-            if ((key == KeyEvent.VK_DOWN || key=='s') && (!upDirection)) {
+            if ((key == KeyEvent.VK_DOWN || key2=='s') && (!upDirection)) {
+                timer.start();
                 downDirection = true;
                 rightDirection = false;
                 leftDirection = false;
+            }
+            if (  key==KeyEvent.VK_ENTER || key==KeyEvent.VK_SPACE ) {
+                timer.stop();
             }
         }
     }
