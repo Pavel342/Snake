@@ -54,13 +54,13 @@ public class mehanika extends JPanel implements ActionListener{
     }
     private void loadImages() {
 
-        ImageIcon iid = new ImageIcon("src/resurse/grud.png");
+        ImageIcon iid = new ImageIcon("src/resurse/3.png");
         telo = iid.getImage();
 
-        ImageIcon iia = new ImageIcon("src/resurse/chlen.png");
+        ImageIcon iia = new ImageIcon("src/resurse/1.png");
         hui = iia.getImage();
 
-        ImageIcon iih = new ImageIcon("src/resurse/dima.png");
+        ImageIcon iih = new ImageIcon("src/resurse/2.png");
         head1 = iih.getImage();
     }
 
@@ -168,8 +168,12 @@ public class mehanika extends JPanel implements ActionListener{
     }
 
     private void locateFruit() {
-        fruitx= oneDot* r.nextInt(shirina/oneDot);
-        fruity=oneDot * r.nextInt(visota/oneDot);
+       for(int i=0;i<lenth;i++){
+          if(masSnakex[i]==fruitx || i==0) fruitx = oneDot * r.nextInt(shirina / oneDot);
+       }
+        for(int i=0;i<lenth;i++) {
+            if(masSnakey[i]==fruity || i==0) fruity = oneDot * r.nextInt(visota / oneDot);
+        }
     }
 
     @Override
